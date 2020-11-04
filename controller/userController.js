@@ -1,11 +1,11 @@
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {Member} = require('../models/Member');
+const {User} = require('../models/User');
 
 module.exports = {
-    postMember: async(req, res) => {
-        let register = await Member.findOne({email: req.body.email});
+    userRegister: async(req, res) => {
+        let register = await User.findOne({email: req.body.email});
         if(register) return res.json('Email Sudah Tersedia');
 
         const salt = bcrypt.genSaltSync(10);
@@ -16,10 +16,10 @@ module.exports = {
             password: hash,
         };
 
-        register = await Member.create(register);
+        register = await User.create(register);
         try {
             res.json({
-                message: 'Success Register Member',
+                message: 'Success Register User',
                 register,
             })
         } catch (error) {
@@ -27,12 +27,12 @@ module.exports = {
         }
     },
 
-    getAllMemberRegister: async (req, res) => {
-        const register = await Member.find({});
+    getAllUserRegister: async (req, res) => {
+        const register = await User.find({});
     
         try {
           res.json({
-            message: "Success Get Data Member",
+            message: "Success Get Data User",
             register,
           });
         } catch (err) {
@@ -40,23 +40,23 @@ module.exports = {
         }
       },
 
-    memberLogin: async(req, res) => {
+    userLogin: async(req, res) => {
         try {
-            const userMember = await Member.findOne({ email: req.body.email });
+            const user = await User.findOne({ email: req.body.email });
 
-            if (userMember) {
-              const pass = bcrypt.compareSync(req.body.password, userMember.password);
+            if (user) {
+              const pass = bcrypt.compareSync(req.body.password, user.password);
               if (pass) {
-                const token = jwt.sign(userMember.toObject(), process.env.KEYWORD);
+                const token = jwt.sign(user.toObject(), process.env.KEYWORD);
                 res.json({
-                  message: "MEMBER LOGIN SUCCESS",
+                  message: "USER LOGIN SUCCESS",
                   token,
                 });
               } else {
                 res.status(400).json("wrong password");
               }
             } else {
-              res.status(400).json("member not found");
+              res.status(400).json("user not found");
             }
           } catch (err) {
             console.log(err);

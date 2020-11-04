@@ -12,4 +12,7 @@ const ExpertSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'professionals'
     }
-})
+});
+
+const Experience = new mongoose.model('experiences', ExpertSchema);
+module.exports = {Experience};
