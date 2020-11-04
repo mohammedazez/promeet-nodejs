@@ -7,6 +7,6 @@ const locationSchema = new mongoose.Schema({
     },
     professionalId : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'professionals'
+        ref: 'userId'
     }
 })
