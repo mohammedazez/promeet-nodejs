@@ -7,10 +7,12 @@ const bookingSchema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
     required: true,
   },
   transferId: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: 'transfers',
     required: true,
   },
   duration: {
@@ -22,7 +24,7 @@ const bookingSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Pending, Proses", "Success", "Failed"],
+    enum: ["Pending", "Proses", "Success", "Failed"],
     default: "Pending",
   },
 });

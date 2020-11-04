@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const profileSchema = new mongoose.Schema({
-    memberId: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        ref: 'users',
     },
     price: {
         type: Number,
@@ -17,13 +17,11 @@ const profileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    StartDateAvailable : {
+    startDateAvailable : {
         type: Date,
-        required: true
     },
-    EndDateAvailable : {
+    endDateAvailable : {
         type: Date,
-        required: true
     },
     locationId: {
         type: mongoose.Schema.Types.ObjectId,

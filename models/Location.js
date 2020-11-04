@@ -5,8 +5,11 @@ const locationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    professionalId : {
+    userId : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'userId'
+        ref: 'users'
     }
-})
+});
+
+const Location = new mongoose.model('locations', locationSchema);
+module.exports = {Location}

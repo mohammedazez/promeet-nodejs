@@ -8,9 +8,9 @@ const profesiSchema = new mongoose.Schema({
     imgUrl: {
         type: String
     },
-    profileId : [{
+    userId : [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'profiles'
+        ref: 'users'
     }]
 });
 

@@ -1,8 +1,10 @@
 const {Transfer} = require('../models/Transfer');
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
 module.exports = {
-    addTransfer : async(req, res) => {
-        const transfer = await Transfer.create();
+    addDataTransfer : async(req, res) => {
+        const transfer = await Transfer.create(req.body);
         try {
             res.json({
                 message: 'Success Add Data Transfer',
@@ -34,5 +36,33 @@ module.exports = {
             res.status(500).send(`Data is ${error}`);
         }
     },
-    
+    editDataTransfer: async(req, res) => {
+        const transfer = await Transfer.findByIdAndUpdate(
+            {_id : req.params.id},
+            {
+                $set : {
+                    nameMethod: req.body.nameMethod,
+                    numberRek: req.body.numberRek
+                }
+            }
+        )
+        try {
+            res.json({
+                message: 'Success Edit Data Transfer',
+                transfer
+            })
+        } catch (error) {
+            res.status(500).send(`Data is ${error}`);
+        }
+    },
+    deleteDataTransfer : async(req, res) => {
+        await Transfer.findByIdAndRemove(req.params.id);
+        try {
+            res.json({
+                message: 'Success Delete'
+            })
+        } catch (error) {
+            res.status(500).send(`Data is ${error}`);
+        }
+    }
 }

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
 
 module.exports = {
-    addProfesi: async (req, res) => {
+    addDatarofesi: async (req, res) => {
         const profesi = await Profesi.create(req.body);
         try {
             res.json({
@@ -50,7 +50,7 @@ module.exports = {
         )
         try {
             res.json({
-                message: 'Edited',
+                message: 'Success Edit Data Transfer',
                 profesi
             })
         } catch (error) {
