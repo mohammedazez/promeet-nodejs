@@ -6,7 +6,7 @@ const {User} = require('../models/User');
 module.exports = {
     userRegister: async(req, res) => {
         let register = await User.findOne({email: req.body.email});
-        if(register) return res.status(400).json({message: 'Email Sudah Tersedia'});
+        if(register) return res.json('Email Sudah Tersedia').status(400);
         
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
@@ -16,8 +16,6 @@ module.exports = {
             password: hash,
         }
 
-
-
         register = await User.create(register);
      
         try {
@@ -26,7 +24,7 @@ module.exports = {
                 register,
             })
         } catch (error) {
-            res.status(400).send(`Data is ${error});
+            res.status(400).send(`Data is ${error}`);
         }
     },
 
