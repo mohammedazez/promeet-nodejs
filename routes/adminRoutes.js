@@ -19,7 +19,7 @@ router.get('/auth', auth, (req, res) => {
 });
 
 // 1.admin
-router.post('/add-admin', postAdmin);
+router.post('/admin/register', postAdmin);
 router.get('/data/admin', getAllAdminRegister);
 router.post('/admin/login', adminLogin);
 

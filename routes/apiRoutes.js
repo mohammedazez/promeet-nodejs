@@ -13,10 +13,10 @@ router.get('/auth', auth, (req, res) => {
     });
 });
 
-router.post('/add-user', userRegister);
+router.post('/user/register', userRegister);
 router.post('/user/login', userLogin);
 
-router.post('/add-prof', profRegister);
+router.post('/prof/register', profRegister);
 router.post('/prof/login', profLogin);
 
 router.get('/profesi', homePage);
