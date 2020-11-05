@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-
 const { auth } = require('../helper/auth');     //untuk login
 const {userRegister, userLogin} = require('../controller/userController');
+const { homePage } = require('../controller/api/apiController');
+
 
 router.get('/auth', auth, (req, res) => {
     res.json({
@@ -11,5 +12,10 @@ router.get('/auth', auth, (req, res) => {
         member: req.body,
     });
 });
+
 router.post('/add-user', userRegister);
 router.post('/user/login', userLogin);
+
+router.get('/profesi', homePage);
+
+module.exports = router;
