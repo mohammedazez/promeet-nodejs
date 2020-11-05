@@ -1,4 +1,8 @@
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
 const {Profesi} = require('../../models/Profesi');
+const {User} = require('../../models/User')
 
 module.exports = {
     homePage: async (req, res) => {
@@ -36,5 +40,27 @@ module.exports = {
         } catch (error) {
             res.status(400).send(error);
         }
+    },
+    profLogin: async(req, res) => {
+        try {
+            const user = await User.findOne({ email: req.body.email });
+
+            if (user) {
+              const pass = bcrypt.compareSync(req.body.password, user.password);
+              if (pass) {
+                const token = jwt.sign(user.toObject(), process.env.KEYWORD);
+                res.json({
+                  message: "Profesional LOGIN SUCCESS",
+                  token,
+                });
+              } else {
+                res.status(400).json("wrong password");
+              }
+            } else {
+              res.status(400).json("profesional not found");
+            }
+          } catch (err) {
+            console.log(err);
+          }
     }
 }
