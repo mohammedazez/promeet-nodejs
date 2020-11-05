@@ -4,7 +4,7 @@ const router = express.Router();
 const { auth } = require('../helper/auth');     //untuk login
 const {postAdmin, getAllAdminRegister, adminLogin} = require('../controller/adminController');
 const {getAllUserRegister} = require('../controller/userController');
-const { addDatarofesi, viewAllDataProfesi, viewDataProfesiById, editDataProfesi, deleteDataProfesi } = require('../controller/profesiController');
+const { viewAllDataProfesi, viewDataProfesiById, editDataProfesi, deleteDataProfesi, addDataProfesi } = require('../controller/profesiController');
 const { addDataTransfer, viewAllDataTransfer, ViewDataTransferById, editDataTransfer, deleteDataTransfer } = require('../controller/transferController');
 const { addDataBooking, viewAllDataBooking, editDataBooking, deleteDataBooking, viewDataBookingById } = require('../controller/bookingController');
 const { addDataLocation, viewAllDataLocation, viewDataLocationById, editDataLocation, deleteDataLocation } = require('../controller/locationController');
@@ -27,7 +27,7 @@ router.post('/admin/login', adminLogin);
 router.get('/data/user', getAllUserRegister);
 
 // 3.profesi
-router.post('/add-profesi', addDatarofesi);
+router.post('/add-profesi', addDataProfesi);
 router.get('/data/profesi', viewAllDataProfesi);
 router.get('/data/profesi/:id', viewDataProfesiById);
 router.put('/edit-profesi/:id', editDataProfesi);

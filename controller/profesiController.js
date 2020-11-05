@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
 
 module.exports = {
-    addDatarofesi: async (req, res) => {
+    addDataProfesi: async (req, res) => {
         const profesi = await Profesi.create(req.body);
         try {
             res.json({
@@ -15,7 +15,7 @@ module.exports = {
         }
     },
     viewAllDataProfesi: async (req, res) => {
-        const profesi = await Profesi.find();
+        const profesi = await Profesi.find()
         try {
             res.json({
                 message: 'Success View All Data Profesi',
@@ -27,7 +27,13 @@ module.exports = {
     },
 
     viewDataProfesiById: async (req, res) => {
-        const profesi = await Profesi.findById(req.params.id);
+        const profesi = await Profesi.findById(req.params.id)
+        .select('_id nameProfesi').populate(
+            {path: 'profileId', select: 'price startDateAvailable',
+            populate: {path: 'userId locationId', select: 'fullName nameLocation'}
+        }
+            
+            );
         try {
             res.json({
                 message: 'Success View Data Profesi by Id',

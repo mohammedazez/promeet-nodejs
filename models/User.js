@@ -26,11 +26,14 @@ const userSchema = new mongoose.Schema({
   profesiId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'professions'
+  },
+  imgUrl :{
+    type: String
   },  
   role : {
       type: String,
       // required: true,
-      enum: ['member', 'profesional'],
+      enum: ['member', 'profesional', 'admin'],
       default: 'member'
   }
 });

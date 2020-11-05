@@ -1,11 +1,11 @@
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {Admin} = require('../models/Admin');
+const {User} = require('../models/User');
 
 module.exports = {
     postAdmin: async(req, res) => {
-        let register = await Admin.findOne({email: req.body.email});
+        let register = await User.findOne({email: req.body.email});
         if(register) return res.json('Email Sudah Tersedia');
 
         const salt = bcrypt.genSaltSync(10);
@@ -13,10 +13,11 @@ module.exports = {
 
         register = {
             ...req.body,
+            role: req.body.role || "admin",
             password: hash,
         };
 
-        register = await Admin.create(register);
+        register = await User.create(register);
         try {
             res.json({
                 message: 'Success Register Admin',
@@ -28,7 +29,7 @@ module.exports = {
     },
 
     getAllAdminRegister: async (req, res) => {
-        const register = await Admin.find({});
+        const register = await User.find({});
     
         try {
           res.json({
@@ -42,7 +43,7 @@ module.exports = {
 
     adminLogin: async(req, res) => {
         try {
-            const userAdmin = await Admin.findOne({ email: req.body.email });
+            const userAdmin = await User.findOne({ email: req.body.email });
 
             if (userAdmin) {
               const pass = bcrypt.compareSync(req.body.password, userAdmin.password);
