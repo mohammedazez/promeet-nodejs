@@ -6,7 +6,7 @@ const {User} = require('../models/User');
 module.exports = {
     userRegister: async(req, res) => {
         let register = await User.findOne({email: req.body.email});
-        if(register) return res.status(400).send('Email Sudah Tersedia');
+        if(register) return res.status(400).json('Email Sudah Tersedia');
         
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
