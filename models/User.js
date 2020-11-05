@@ -23,8 +23,13 @@ const userSchema = new mongoose.Schema({
   address: {
       type: String,
   },
+  profesiId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'professions'
+  },  
   role : {
       type: String,
+      // required: true,
       enum: ['member', 'profesional'],
       default: 'member'
   }

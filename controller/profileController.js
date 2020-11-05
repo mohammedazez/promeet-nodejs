@@ -11,7 +11,7 @@ module.exports = {
                 profile
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`)
+            res.status(400).send(`Data is ${error}`)
         }
     },
     viewAllDataProfile: async (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
                 profile
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewDataProfileById: async (req, res) => {
@@ -35,7 +35,7 @@ module.exports = {
                 profile
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     // editDataProfile: async (req, res) => {
@@ -48,7 +48,7 @@ module.exports = {
     //             profile
     //         })
     //     } catch (error) {
-    //         res.status(500).send(`Data is ${error}`);
+    //         res.status(400).send(`Data is ${error}`);
     //     }
     // }
 }

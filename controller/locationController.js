@@ -11,7 +11,7 @@ module.exports = {
                 location,
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewAllDataLocation: async(req, res) => {
@@ -22,7 +22,7 @@ module.exports = {
                 location,
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewDataLocationById: async(req, res) => {
@@ -33,7 +33,7 @@ module.exports = {
                 location,
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     editDataLocation: async(req, res) => {
@@ -51,7 +51,7 @@ module.exports = {
                 location
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     deleteDataLocation: async(req, res) => {
@@ -61,7 +61,7 @@ module.exports = {
                 message: 'Success Delete'
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     }
 }

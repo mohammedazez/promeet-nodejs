@@ -6,24 +6,27 @@ const {User} = require('../models/User');
 module.exports = {
     userRegister: async(req, res) => {
         let register = await User.findOne({email: req.body.email});
-        if(register) return res.json('Email Sudah Tersedia');
-
+        if(register) return res.status(400).send('Email Sudah Tersedia');
+        
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         register = {
             ...req.body,
             password: hash,
-        };
+        }
+
+
 
         register = await User.create(register);
+     
         try {
             res.json({
                 message: 'Success Register User',
                 register,
             })
         } catch (error) {
-            res.status(500).send(error);
+            res.status(400).send(error);
         }
     },
 
@@ -36,7 +39,7 @@ module.exports = {
             register,
           });
         } catch (err) {
-          res.status(500).send(err);
+          res.status(400).send(err);
         }
       },
 

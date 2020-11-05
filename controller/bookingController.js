@@ -11,7 +11,7 @@ module.exports = {
                 booking
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewAllDataBooking: async(req, res) => {
@@ -22,7 +22,7 @@ module.exports = {
                 booking
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewDataBookingById: async(req, res) => {
@@ -33,7 +33,7 @@ module.exports = {
                 booking
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     editDataBooking: async(req, res) => {
@@ -55,7 +55,7 @@ module.exports = {
                 message: 'Success Edit Data Booking'
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     deleteDataBooking: async(req, res) => {
@@ -65,7 +65,7 @@ module.exports = {
                 message: 'Success Delete'
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     }
 }

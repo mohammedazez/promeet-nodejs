@@ -11,7 +11,7 @@ module.exports = {
                 transfer
             });
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewAllDataTransfer: async(req, res) => {
@@ -22,7 +22,7 @@ module.exports = {
                 transfer
             });
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     ViewDataTransferById: async(req, res) => {
@@ -33,7 +33,7 @@ module.exports = {
                 transfer
             });
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     editDataTransfer: async(req, res) => {
@@ -52,7 +52,7 @@ module.exports = {
                 transfer
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     deleteDataTransfer : async(req, res) => {
@@ -62,7 +62,7 @@ module.exports = {
                 message: 'Success Delete'
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     }
 }

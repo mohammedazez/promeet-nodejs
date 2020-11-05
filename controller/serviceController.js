@@ -11,7 +11,7 @@ module.exports = {
                 service,
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewAllDataService: async(req, res) => {
@@ -22,7 +22,7 @@ module.exports = {
                 service,
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewDataServiceById: async(req, res) => {
@@ -33,7 +33,7 @@ module.exports = {
                 service,
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     editDataService: async(req, res) => {
@@ -51,7 +51,7 @@ module.exports = {
                 service
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     deleteDataService: async(req, res) => {
@@ -61,7 +61,7 @@ module.exports = {
                 message: 'Success Delete'
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     }
 }

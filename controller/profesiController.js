@@ -11,7 +11,7 @@ module.exports = {
                 profesi
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     viewAllDataProfesi: async (req, res) => {
@@ -22,7 +22,7 @@ module.exports = {
                 profesi
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`)
+            res.status(400).send(`Data is ${error}`)
         }
     },
 
@@ -34,7 +34,7 @@ module.exports = {
                 profesi
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`);
+            res.status(400).send(`Data is ${error}`);
         }
     },
     editDataProfesi: async (req, res) => {
@@ -54,7 +54,7 @@ module.exports = {
                 profesi
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`)
+            res.status(400).send(`Data is ${error}`)
         }
     },
     deleteDataProfesi: async (req, res) => {
@@ -64,7 +64,7 @@ module.exports = {
                 message: 'Success Delete'
             })
         } catch (error) {
-            res.status(500).send(`Data is ${error}`)
+            res.status(400).send(`Data is ${error}`)
         }
     }
 

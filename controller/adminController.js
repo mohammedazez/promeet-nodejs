@@ -23,7 +23,7 @@ module.exports = {
                 register,
             })
         } catch (error) {
-            res.status(500).send(error);
+            res.status(400).send(error);
         }
     },
 
@@ -36,7 +36,7 @@ module.exports = {
             register,
           });
         } catch (err) {
-          res.status(500).send(err);
+          res.status(400).send(err);
         }
       },
 
