@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { auth } = require('../helper/auth');     //untuk login
 const {userRegister, userLogin, profRegister, profLogin} = require('../controller/userController');
-const { homePage, profesiPage} = require('../controller/api/apiController');
+const { homePage, profesiPage, viewDataProfesional} = require('../controller/api/apiController');
 
 
 router.get('/auth', auth, (req, res) => {
@@ -21,4 +21,6 @@ router.post('/prof/login', profLogin);
 
 router.get('/profesi', homePage);
 router.get('/profesi/:id', profesiPage);
+
+router.get('/profesional/:id', viewDataProfesional);
 module.exports = router;

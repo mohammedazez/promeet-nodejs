@@ -43,7 +43,7 @@ module.exports = {
         const profile = await Profile.findById(req.params.id);
         try {
             res.json({
-                message: 'Success View All Data profile',
+                message: 'Success View Data profile By Id',
                 profile
             })
         } catch (error) {
