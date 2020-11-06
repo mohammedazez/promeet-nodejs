@@ -4,7 +4,8 @@ mongoose.set('useFindAndModify', false);
 
 module.exports = {
     addDataBooking: async(req, res) => {
-        const booking = await Booking.create(req.body);
+        const booking = await Booking.create(req.body)
+        ;
         try {
             res.json({
                 message: 'Success Add Data Booking',
@@ -15,7 +16,15 @@ module.exports = {
         }
     },
     viewAllDataBooking: async(req, res) => {
-        const booking = await Booking.find();
+        const booking = await Booking.find()
+        .populate({path: ' userId profileId transferId', select: ' fullName _id price nameTransfer',
+        populate : {
+            path: 'userId',
+            select: 'fullName role'
+        }
+    }
+        )
+        ;
         try {
             res.json({
                 message: 'Success View All Data Booking',

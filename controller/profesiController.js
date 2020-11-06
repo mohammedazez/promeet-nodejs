@@ -30,7 +30,7 @@ module.exports = {
         const profesi = await Profesi.findById(req.params.id)
         .select('_id nameProfesi').populate(
             {path: 'profileId', select: 'price startDateAvailable',
-            populate: {path: 'userId locationId', select: 'fullName nameLocation'}
+            populate: {path: 'userId locationId', select: 'fullName role nameLocation'}
         }
             
             );

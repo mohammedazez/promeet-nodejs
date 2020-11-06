@@ -7,7 +7,11 @@ const bookingSchema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'users'
+  },
+  profileId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profiles',
     required: true,
   },
   transferId: {

@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'professions'
   },
+  profileId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profiles'
+  },
   imgUrl :{
     type: String
   },  

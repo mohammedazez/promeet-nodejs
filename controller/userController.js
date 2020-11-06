@@ -65,21 +65,21 @@ module.exports = {
     },
 
     profRegister: async (req, res) => {
-      let register = await User.findOne({ email: req.body.email });
-      if (register) return res.json('Email Sudah Tersedia');
-  
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(req.body.password, salt);
-  
-      register = {
-        ...req.body,
-        role: req.body.role || "profesional",
-        password: hash,
-      }
-  
-      register = await User.create(register);
-  
       try {
+        let register = await User.findOne({ email: req.body.email });
+        if (register) return res.json('Email Sudah Tersedia');
+    
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
+    
+        register = {
+          ...req.body,
+          role: req.body.role || "profesional",
+          
+          password: hash,
+        }
+    
+        register = await User.create(register);
         res.json({
           message: 'Success Register User',
           register,

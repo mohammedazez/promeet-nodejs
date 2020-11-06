@@ -14,7 +14,7 @@ const profileSchema = new mongoose.Schema({
         required: true
     },
     timeAvailable : {
-        type: String,
+        type: Date,
         required: true
     },
     startDateAvailable : {
