@@ -11,7 +11,7 @@ module.exports = {
     if (token == null) return res.json("missing token");
 
     try {
-      const isTokenValid = jwt.verify(token, process.env.MEMBER_KEY);
+      const isTokenValid = jwt.verify(token, process.env.KEYWORD);
       console.log("ISI TOKEN", isTokenValid);
       if (isTokenValid) {
         let { password, ...rest } = isTokenValid;
