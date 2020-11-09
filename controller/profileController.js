@@ -7,11 +7,15 @@ mongoose.set('useFindAndModify', false);
 module.exports = {
     addDataProfile: async (req, res) => {
         try {
-            const { userId, price, description, timeAvailable, startDateAvailable, endDateAvailable, 
+            const { userId, imgUrl, imgKtp, price, description, 
+                timeAvailable, startDateAvailable, endDateAvailable, 
                 locationId, experience, profesiId, serviceId } = req.body;
-                const profesi = await Profesi.findOne({ _id: profesiId })
+
+            const profesi = await Profesi.findOne({ _id: profesiId })
+
             const newProfile = { 
-                userId, price, description, timeAvailable, startDateAvailable, endDateAvailable,
+                userId, imgUrl, imgKtp, price, description, 
+                timeAvailable, startDateAvailable, endDateAvailable,
                 locationId, experience, profesiId, serviceId 
             }
 
