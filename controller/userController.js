@@ -54,7 +54,7 @@ module.exports = {
                   token,
                 });
               } else {
-                res.status(400).json("wrong password");
+                res.json({message: "wrong password"});
               }
             } else {
               res.status(400).json("user not found");
