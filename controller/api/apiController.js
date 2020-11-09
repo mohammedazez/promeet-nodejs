@@ -75,12 +75,13 @@ module.exports = {
           profile
         })
       } else {
-        res.json({message: "role failed"})
+        res.json({message: "not found"})
       }
     } catch (error) {
       res.status(400).send(`Data is ${error}`);
     }
   },
+  
   bookingPage: async (req, res) => {
     const booking = await Booking.create(req.body);
 
@@ -90,7 +91,7 @@ module.exports = {
         booking,
       });
     } catch (err) {
-      res.status(500).send(err);
+      res.status(400).send({message: `Error is ${err}`});
     }
   },
 

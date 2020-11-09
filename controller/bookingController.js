@@ -22,9 +22,7 @@ module.exports = {
             path: 'userId',
             select: 'fullName role'
         }
-    }
-        )
-        ;
+    });
         try {
             res.json({
                 message: 'Success View All Data Booking',

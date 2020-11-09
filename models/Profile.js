@@ -5,6 +5,12 @@ const profileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
     },
+    imgUrl : {
+        type: String,
+    },
+    imgKtp :{
+        type: String,
+    },
     price: {
         type: Number,
         required: true,

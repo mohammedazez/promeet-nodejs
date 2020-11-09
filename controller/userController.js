@@ -75,7 +75,6 @@ module.exports = {
         register = {
           ...req.body,
           role: req.body.role || "profesional",
-          
           password: hash,
         }
     
