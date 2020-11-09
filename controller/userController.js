@@ -57,7 +57,7 @@ module.exports = {
                 res.json({message: "wrong password"});
               }
             } else {
-              res.status(400).json("user not found");
+              res.json({message: "user not found"});
             }
           } catch (err) {
             console.log(err);
@@ -100,10 +100,10 @@ module.exports = {
               token,
             });
           } else {
-            res.status(400).json("wrong password");
+            res.json({message: "wrong password"});
           }
         } else {
-          res.status(400).json("profesional not found");
+          res.json({message: "user not found"});
         }
       } catch (err) {
         console.log(err);
