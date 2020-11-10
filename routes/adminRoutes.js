@@ -21,7 +21,7 @@ router.get('/auth', auth, (req, res) => {
 // 1.admin
 router.post('/admin/register', postAdmin);
 router.get('/data/admin', getAllAdminRegister);
-router.post('/admin/login', adminLogin);
+router.post('/login', adminLogin);
 
 // 2.user [member & professional]
 router.get('/data/user', getAllUserRegister);
