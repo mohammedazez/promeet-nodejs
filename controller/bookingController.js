@@ -17,11 +17,11 @@ module.exports = {
     },
     viewAllDataBooking: async(req, res) => {
         const booking = await Booking.find()
-        .populate({path: ' userId profileId transferId', select: ' fullName _id price nameTransfer',
-        populate : {
-            path: 'userId',
-            select: 'fullName role'
-        }
+        .populate({path: ' userId profileId transferId', select: ' fullName _id price nameMethod',
+        // populate : {
+        //     path: 'userId',
+        //     select: 'fullName role'
+        // }
     });
         try {
             res.json({
