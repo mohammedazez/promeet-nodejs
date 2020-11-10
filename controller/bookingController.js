@@ -33,7 +33,13 @@ module.exports = {
         }
     },
     viewDataBookingById: async(req, res) => {
-        const booking = await Booking.findById(req.params.id);
+        const booking = await Booking.findById(req.params.id)
+        .populate({path: ' userId profileId transferId', select: 'fullName _id  price nameMethod',
+        populate : {
+            path: 'userId profesiId',
+            select: 'fullName role nameProfesi'
+        }
+    });
         try {
             res.json({
                 message: 'Success View Data Booking By Id',
