@@ -65,7 +65,8 @@ module.exports = {
         );
         try {
             res.json({
-                message: 'Success Edit Data Booking'
+                message: 'Success Edit Data Booking',
+                booking
             })
         } catch (error) {
             res.status(400).send(`Data is ${error}`);
