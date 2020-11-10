@@ -26,6 +26,9 @@ const bookingSchema = new mongoose.Schema({
   total: {
     type: Number,
   },
+  imgUrl: {
+    type: String
+  },
   status: {
     type: String,
     enum: ["Pending", "Proses", "Success", "Failed"],
