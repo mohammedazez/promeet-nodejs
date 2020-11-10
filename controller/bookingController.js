@@ -19,8 +19,8 @@ module.exports = {
         const booking = await Booking.find()
         .populate({path: ' userId profileId transferId', select: 'fullName _id  price nameMethod',
         populate : {
-            path: 'userId',
-            select: 'fullName role'
+            path: 'userId profesiId',
+            select: 'fullName role nameProfesi'
         }
     });
         try {
