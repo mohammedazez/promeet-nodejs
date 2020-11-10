@@ -48,11 +48,11 @@ module.exports = {
             {_id: req.params.id},
             {
                 $set:{
-                    codeInvoice: req.body.codeInvoice,
-                    userId: req.body.userId,
-                    transferId: req.body.transferId,
-                    duration: req.body.duration,
-                    total: req.body.total,
+                    // codeInvoice: req.body.codeInvoice,
+                    // userId: req.body.userId,
+                    // transferId: req.body.transferId,
+                    // duration: req.body.duration,
+                    // total: req.body.total,
                     status: req.body.status
                 }
             }
