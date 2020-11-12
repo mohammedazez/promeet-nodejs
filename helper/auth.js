@@ -16,6 +16,7 @@ module.exports = {
       if (isTokenValid) {
         let { password, ...rest } = isTokenValid;
         req.body = rest;
+        // req.body.fullName = rest;
         next();
       }
     } catch {

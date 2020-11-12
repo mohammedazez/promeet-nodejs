@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
   address: {
       type: String,
   },
+  locationId : {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'locations'
+  },
   profesiId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'professions'
