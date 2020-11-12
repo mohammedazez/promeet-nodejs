@@ -68,7 +68,7 @@ module.exports = {
   viewDetailDataProfesional: async (req, res) => {
     try {
       const profile = await Profile.findById(req.params.id)
-      .populate({path: 'userId', select: 'fullName role'})
+      .populate({path: 'userId locationId serviceId profesiId', select: 'fullName role nameLocation nameService nameProfesi'})
       if(profile.userId.role === "profesional") {
         res.json({
           message: 'Success View Detail profesional',

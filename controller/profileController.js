@@ -54,6 +54,8 @@ module.exports = {
             res.status(400).send(`Data is ${error}`);
         }
     },
+
+    
     // editDataProfile: async (req, res) => {
     //     const profile = await Profile.find().populate(
     //         { path: 'userId locationId profesiId serviceId', select: 'fullName' }
