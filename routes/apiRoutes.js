@@ -8,7 +8,9 @@ const { homePage, viewDataProfessionalByProfesi, viewDetailDataProfesional, book
 
 router.get('/auth', auth, async (req, res) => {
     const member = await User.findById(req.body._id)
-    .populate({path: 'profileId ', select: 'price'})
+    .populate({path: 'profileId ', select: 'price description timeAvailable startDateAvailable endDateAvailable experience.nameExperience experience.yearExperience', 
+    populate : {path: 'locationId serviceId', select : 'nameLocation nameService'}
+    })
     res.json({
         message: 'Page for Admin/User/Profesional',
         member
@@ -20,7 +22,7 @@ router.get('/auth', auth, async (req, res) => {
 router.post('/user/register', userRegister);
 router.post('/user/login', userLogin);
 
-router.post('/prof/register', profRegister);
+router.post('/prof/register', profRegister); 
 router.post('/prof/login', profLogin);
 router.get('/edit-prof/:id', updateProfesional);
 
