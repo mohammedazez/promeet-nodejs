@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
 const locationSchema = new mongoose.Schema({
+    nameCity: {
+        type: String
+    },
     nameLocation : {
         type: String,
-        required: true
+       
+    },
+    detailLocation : {
+        type: String
     },
     userId : [{
         type: mongoose.Schema.Types.ObjectId,
