@@ -13,7 +13,7 @@ const profileSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        // required: true,
+        required: true,
     },
     description: {
         type: String,

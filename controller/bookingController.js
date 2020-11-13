@@ -4,8 +4,11 @@ mongoose.set('useFindAndModify', false);
 
 module.exports = {
     addDataBooking: async(req, res) => {
-        const booking = await Booking.create(req.body)
-        ;
+        const {name, dll} = req.body
+        
+        const booking = await Booking.create({name, dll});
+
+
         try {
             res.json({
                 message: 'Success Add Data Booking',

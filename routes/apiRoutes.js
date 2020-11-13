@@ -7,9 +7,8 @@ const { homePage, viewDataProfessionalByProfesi, viewDetailDataProfesional, book
 
 
 router.get('/auth', auth, async (req, res) => {
-    const member = await User.findById(req.body._id)
-    .select()
-    .populate({path: 'profesiId locationId', select: 'nameProfesi nameLocation'})
+    const member = await User.findById(req.body._id).populate({path: 'profileId'})
+    console.log('iisi auth', req.body._id)
     res.json({
         message: 'Page for Admin/User/Profesional',
         member

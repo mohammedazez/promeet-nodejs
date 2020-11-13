@@ -14,8 +14,9 @@ module.exports = {
       const isTokenValid = jwt.verify(token, process.env.KEYWORD);
       console.log("ISI TOKEN", isTokenValid);
       if (isTokenValid) {
-        let { password, ...rest } = isTokenValid;
-        req.body = rest;
+        // let { password, ...rest } = isTokenValid;
+        // req.body = rest;
+        req.body = {...req.body, ...isTokenValid}
         // req.body.fullName = rest;
         next();
       }
