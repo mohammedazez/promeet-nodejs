@@ -41,7 +41,9 @@ module.exports = {
             {_id: req.params.id},
             {
                 $set:{
-                    nameLocation: req.body.nameLocation
+                    nameCity: req.body.nameCity,
+                    nameLocation: req.body.nameLocation,
+                    detailLocation: req.body.detailLocation
                 }
             }
         );
