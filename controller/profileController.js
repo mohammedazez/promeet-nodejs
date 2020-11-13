@@ -32,7 +32,7 @@ module.exports = {
     },
     viewAllDataProfile: async (req, res) => {
         const profile = await Profile.find().populate(
-            { path: 'userId locationId profesiId serviceId', select: 'fullName role nameLocation nameProfesi nameService' }
+            { path: 'userId locationId profesiId serviceId', select: 'fullName email role nameLocation nameProfesi nameService' }
         );
         try {
             res.json({

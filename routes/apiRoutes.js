@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {User} = require('../models/User');
 const { auth } = require('../helper/auth');     //untuk login
-const {userRegister, userLogin, profRegister, profLogin} = require('../controller/userController');
+const {userRegister, userLogin, profRegister, profLogin, updateProfesional} = require('../controller/userController');
 const { homePage, viewDataProfessionalByProfesi, viewDetailDataProfesional, bookingPage} = require('../controller/api/apiController');
 
 
@@ -23,6 +23,7 @@ router.post('/user/login', userLogin);
 
 router.post('/prof/register', profRegister);
 router.post('/prof/login', profLogin);
+router.put('/edit-prof/:id', updateProfesional);
 
 router.get('/profesi', homePage);
 router.get('/profesi/:id', viewDataProfessionalByProfesi);

@@ -13,15 +13,15 @@ const profileSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: true,
+        // required: true,
     },
     description: {
         type: String,
-        required: true
+        // required: true
     },
     timeAvailable : {
         type: Date,
-        required: true
+        // required: true
     },
     startDateAvailable : {
         type: Date,
