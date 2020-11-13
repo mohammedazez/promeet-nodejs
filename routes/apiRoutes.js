@@ -10,7 +10,7 @@ router.get('/auth', auth, async (req, res) => {
     const member = await User.findById(req.body._id)
     .select('_id fullName email role numberPhone dob address')
     .populate({path: 'profileId ', select: 'price description timeAvailable startDateAvailable endDateAvailable experience.nameExperience experience.yearExperience', 
-    populate : {path: 'locationId serviceId', select : 'nameLocation nameService'}
+    populate : {path: 'locationId serviceId', select : 'nameCity nameLocation detailLocation nameService'}
     })
     res.json({
         message: 'Page for Admin/User/Profesional',
