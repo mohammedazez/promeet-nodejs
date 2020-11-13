@@ -8,7 +8,7 @@ const { homePage, viewDataProfessionalByProfesi, viewDetailDataProfesional, book
 
 router.get('/auth', auth, async (req, res) => {
     const member = await User.findById(req.body._id)
-    .select('_id fullName email role numberPhone')
+    .select('_id fullName email role numberPhone dob address')
     .populate({path: 'profileId ', select: 'price description timeAvailable startDateAvailable endDateAvailable experience.nameExperience experience.yearExperience', 
     populate : {path: 'locationId serviceId', select : 'nameLocation nameService'}
     })

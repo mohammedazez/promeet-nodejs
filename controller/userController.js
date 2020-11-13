@@ -118,6 +118,8 @@ module.exports = {
         userPro.fullName = req.body.fullName !== null ? req.body.fullName : userPro.fullName
         userPro.email = req.body.email !== null ? req.body.email : userPro.email
         userPro.numberPhone = req.body.numberPhone !== null ? req.body.numberPhone : userPro.numberPhone
+        userPro.dob = req.body.dob !== nulll ? req.body.dob : userPro.dob
+        userPro.address = req.body.address !== null ? req.body.address : userPro.address
         await userPro.save();
         console.log('userPro', userPro)
 
