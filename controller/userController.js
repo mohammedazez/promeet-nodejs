@@ -113,38 +113,45 @@ module.exports = {
     },
 
     updateProfesional: async(req, res) => {
+      console.log(req.body.price)
       try {
         const userPro = await User.findById(req.params.id)
-        userPro.fullName = req.body.fullName !== null ? req.body.fullName : userPro.fullName
-        userPro.email = req.body.email !== null ? req.body.email : userPro.email
-        userPro.numberPhone = req.body.numberPhone !== null ? req.body.numberPhone : userPro.numberPhone
+        
+        userPro.fullName = req.body.fullName || userPro.fullName
+        userPro.email =  req.body.email || userPro.email
+        userPro.numberPhone = req.body.numberPhone || userPro.numberPhone
         await userPro.save();
-        console.log('userPro', userPro)
 
-        const userProfile = await Profile.findById(userPro._id)
-        return userPro;
-        userProfile.price = req.body.price !== null ? req.body.price :  userProfile.price
-        userProfile.description = req.body.description !== null ? req.body.description :  userProfile.description
-        userProfile.imgUrl = req.body.imgUrl !== null ? req.body.imgUrl : userProfile.imgUrl
-        userProfile.imgKtp = req.body.imgKtp !== null ? req.body.imgKtp :  userProfile.imgKtp
-        userProfile.timeAvailable = req.body.timeAvailable !== null ? req.body.timeAvailable :  userProfile.timeAvailable
-        userProfile.startDateAvailable = req.body.startDateAvailable !== null ? req.body.startDateAvailable :  userProfile.startDateAvailable
-        userProfile.endDateAvailable = req.body.endDateAvailable !== null ? req.body.endDateAvailable :  userProfile.endDateAvailable
-        userProfile.locationId = req.body.locationId !== null ? req.body.locationId :  userProfile.locationId
-        userProfile.experience = req.body.experience !== null ? req.body.experience :  userProfile.experience
-        userProfile.profesiId = req.body.profesiId !== null ? req.body.profesiId :  userProfile.profesiId
-        userProfile.serviceId = req.body.serviceId !== null ? req.body.serviceId :  userProfile.serviceId      
-        await userProfile.save();
+        const userProfile = await Profile.findOne({userId: userPro._id})
 
-       
+        if(userProfile){
+          userProfile.price =  req.body.price ||  userProfile.price
+          userProfile.description = req.body.description ||  userProfile.description
+          userProfile.imgUrl =  req.body.imgUrl || userProfile.imgUrl
+          userProfile.imgKtp =  req.body.imgKtp ||  userProfile.imgKtp
+          userProfile.timeAvailable =  req.body.timeAvailable ||  userProfile.timeAvailable
+          userProfile.startDateAvailable =  req.body.startDateAvailable ||  userProfile.startDateAvailable
+          userProfile.endDateAvailable =  req.body.endDateAvailable ||  userProfile.endDateAvailable
+          userProfile.locationId = req.body.locationId ||  userProfile.locationId
+          userProfile.experience = req.body.experience ||  userProfile.experience
+          userProfile.profesiId =  req.body.profesiId || userProfile.profesiId
+          userProfile.serviceId =  req.body.serviceId ||  userProfile.serviceId     
 
-          res.json({
-            message: "Ssuccess edit pro",
-            data: {userPro, userProfile}
-          })
-    
+          await userProfile.save();
+        } else {
+          throw new Error('profile not found')
+        }
+
+         return res.json({
+          message: 'sukses update',
+          data: {
+            userProfile,
+            userPro
+          }
+        })  
       } catch (error) {
         console.log(error)
+        res.send(error.message)
       }
 
     }
