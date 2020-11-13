@@ -25,7 +25,7 @@ router.post('/user/login', userLogin);
 
 router.post('/prof/register', profRegister); 
 router.post('/prof/login', profLogin);
-router.get('/edit-prof/:id', updateProfesional);
+router.put('/edit-prof/:id', updateProfesional);
 
 router.get('/profesi', homePage);
 router.get('/profesi/:id', viewDataProfessionalByProfesi);
