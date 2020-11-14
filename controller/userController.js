@@ -126,6 +126,7 @@ module.exports = {
         let userProfile = await Profile.findOne( {userId: userPro._id})
        
         if(userProfile){
+          userProfile.price = req.body.price ||  userProfile.price
           userProfile.description = req.body.description ||  userProfile.description
           userProfile.imgUrl = req.body.imgUrl || userProfile.imgUrl
           userProfile.imgKtp = req.body.imgKtp ||  userProfile.imgKtp
