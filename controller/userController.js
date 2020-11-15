@@ -121,7 +121,7 @@ module.exports = {
         userPro.numberPhone = req.body.numberPhone !== null ? req.body.numberPhone : userPro.numberPhone
         userPro.dob = req.body.dob !== null ? req.body.dob : userPro.dob
         userPro.address = req.body.address !== null ? req.body.address : userPro.address
-
+        userPro.profileId = req.body.profileId !== null ? req.body.profileId : userPro.profileId
         await userPro.save();
         console.log('userPro', userPro)
 
@@ -159,7 +159,7 @@ module.exports = {
           })
               // throw new Error('profile not found')
               userPro.profileId = userProfile._id;
-              // await userProfile.save();
+              await userProfile.save();
               await userPro.save()
 
         }
