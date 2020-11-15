@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {User} = require('../models/User');
 const {Profile} = require('../models/Profile');
+const {Profesi} = require('../models/Profesi');
 
 module.exports = {
     userRegister: async(req, res) => {
@@ -123,7 +124,8 @@ module.exports = {
         await userPro.save();
         console.log('userPro', userPro)
 
-        let userProfile = await Profile.findOne( {userId: userPro._id})
+        let userProfile = await Profile.findOne( {userId: userPro._id});
+        let userProfesi = await Profesi.findOne({profileId: userProfile._id })
        
         if(userProfile){
           userProfile.price = req.body.price ||  userProfile.price
@@ -138,6 +140,7 @@ module.exports = {
           userProfile.profesiId = req.body.profesiId ||  userProfile.profesiId
           userProfile.serviceId = req.body.serviceId ||  userProfile.serviceId      
           await userProfile.save();
+          await userProfesi.save();
           // console.log('user profile', userProfile)
 
         }else {
@@ -156,15 +159,17 @@ module.exports = {
             serviceId: req.body.serviceId
           })
               // throw new Error('profile not found')
-              userPro.profileId = userProfile._id
+              userPro.profileId = userProfile._id;
+              userProfile.profesiId = userProfile._id
               await userPro.save()
+              await userProfile.save();
         }
        
         console.log(userPro.profileId, 'userProp')
      
          res.json({
             message: "Ssuccess edit pro",
-            data: {userPro, userProfile}
+            data: {userPro, userProfile, userProfesi}
           })
     
       } catch (error) {
