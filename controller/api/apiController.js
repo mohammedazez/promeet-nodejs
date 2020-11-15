@@ -49,7 +49,7 @@ module.exports = {
       .select("_id nameProfesi ")
       .populate({
         path: "profileId ",
-        select: "price startDateAvailable experience.nameExperience experience.yearExperience",
+        select: "price imgUrl startDateAvailable experience.nameExperience experience.yearExperience",
         
         populate: {
           path: "userId locationId",
