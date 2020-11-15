@@ -121,12 +121,12 @@ module.exports = {
         userPro.numberPhone = req.body.numberPhone !== null ? req.body.numberPhone : userPro.numberPhone
         userPro.dob = req.body.dob !== null ? req.body.dob : userPro.dob
         userPro.address = req.body.address !== null ? req.body.address : userPro.address
+
         await userPro.save();
         console.log('userPro', userPro)
 
         let userProfile = await Profile.findOne( {userId: userPro._id});
-        let userProfesi = await Profesi.findOne({profileId: userProfile._id })
-       
+
         if(userProfile){
           userProfile.price = req.body.price ||  userProfile.price
           userProfile.description = req.body.description ||  userProfile.description
@@ -138,11 +138,10 @@ module.exports = {
           userProfile.locationId = req.body.locationId || userProfile.locationId
           userProfile.experience = req.body.experience ||  userProfile.experience
           userProfile.profesiId = req.body.profesiId ||  userProfile.profesiId
-          userProfile.serviceId = req.body.serviceId ||  userProfile.serviceId      
-          await userProfile.save();
-          await userProfesi.save();
-          // console.log('user profile', userProfile)
+          userProfile.serviceId = req.body.serviceId ||  userProfile.serviceId  
 
+          // await userProfile.save();
+          
         }else {
           userProfile = await Profile.create({
             price: req.body.price,
@@ -160,16 +159,17 @@ module.exports = {
           })
               // throw new Error('profile not found')
               userPro.profileId = userProfile._id;
-              userProfile.profesiId = userProfile._id
+              // await userProfile.save();
               await userPro.save()
-              await userProfile.save();
+
         }
-       
-        console.log(userPro.profileId, 'userProp')
+
+        console.log('userProp', userProfile )
+        console.log('userprofesi 1', userProfile.profesiId);
      
          res.json({
             message: "Ssuccess edit pro",
-            data: {userPro, userProfile, userProfesi}
+            data: {userPro, userProfile}
           })
     
       } catch (error) {

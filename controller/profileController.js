@@ -12,6 +12,7 @@ module.exports = {
                 locationId, experience, profesiId, serviceId } = req.body;
 
             const profesi = await Profesi.findOne({ _id: profesiId })
+            console.log('profesi', profesi)
 
             const newProfile = { 
                 userId, imgUrl, imgKtp, price, description, 
