@@ -140,7 +140,7 @@ module.exports = {
           userProfile.profesiId = req.body.profesiId ||  userProfile.profesiId
           userProfile.serviceId = req.body.serviceId ||  userProfile.serviceId  
 
-          // await userProfile.save();
+          await userProfile.save();
           
         }else {
           userProfile = await Profile.create({
@@ -159,7 +159,7 @@ module.exports = {
           })
               // throw new Error('profile not found')
               userPro.profileId = userProfile._id;
-              await userProfile.save();
+              // await userProfile.save();
               await userPro.save()
 
         }
