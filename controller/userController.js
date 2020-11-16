@@ -125,7 +125,7 @@ module.exports = {
         console.log('userPro', userPro)
 
         let userProfile = await Profile.findOne( {userId: userPro._id});
-        let userProfesi = await Profesi.findOne({_id: userProfile.profesiId._id});
+        // let userProfesi = await Profesi.findOne({_id: userProfile.profesiId._id});
         
         if(userProfile){
           userProfile.price = req.body.price ||  userProfile.price
@@ -168,6 +168,7 @@ module.exports = {
               await userPro.save()
               // userProfesi.profileId.push({_id: userProfile._id});
               // await userProfesi.save();
+              
         }
 
         // console.log('userProp', userProfile )
