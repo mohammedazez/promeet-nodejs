@@ -121,12 +121,12 @@ module.exports = {
         userPro.numberPhone = req.body.numberPhone !== null ? req.body.numberPhone : userPro.numberPhone
         userPro.dob = req.body.dob !== null ? req.body.dob : userPro.dob
         userPro.address = req.body.address !== null ? req.body.address : userPro.address
-        userPro.profileId = req.body.profileId !== null ? req.body.profileId : userPro.profileId
         await userPro.save();
         console.log('userPro', userPro)
 
         let userProfile = await Profile.findOne( {userId: userPro._id});
-
+        let userProfesi = await Profesi.findOne({_id: userProfile.profesiId._id});
+        
         if(userProfile){
           userProfile.price = req.body.price ||  userProfile.price
           userProfile.description = req.body.description ||  userProfile.description
@@ -138,9 +138,13 @@ module.exports = {
           userProfile.locationId = req.body.locationId || userProfile.locationId
           userProfile.experience = req.body.experience ||  userProfile.experience
           userProfile.profesiId = req.body.profesiId ||  userProfile.profesiId
-          userProfile.serviceId = req.body.serviceId ||  userProfile.serviceId  
+          userProfile.serviceId = req.body.serviceId ||  userProfile.serviceId 
+
+           userPro.profileId = userProfile._id;
 
           await userProfile.save();
+          // userProfesi.profileId.push({_id: userProfile._id});
+          // await userProfesi.save();
           
         }else {
           userProfile = await Profile.create({
@@ -160,15 +164,18 @@ module.exports = {
               // throw new Error('profile not found')
               userPro.profileId = userProfile._id;
               // await userProfile.save();
+              // userPro.profileId.push({_id: userProfile._id})
               await userPro.save()
-
+              // userProfesi.profileId.push({_id: userProfile._id});
+              // await userProfesi.save();
         }
 
-        console.log('userProp', userProfile )
-        console.log('userprofesi 1', userProfile.profesiId);
-     
+        // console.log('userProp', userProfile )
+        // console.log('userprofesi 1', userProfile.profesiId);
+        console.log('userProfesi', userProfesi);
+
          res.json({
-            message: "Ssuccess edit pro",
+            message: "success edit pro",
             data: {userPro, userProfile}
           })
     
